@@ -1,0 +1,98 @@
+:root{
+  --navy: #020B44;
+  --navy-soft: #0A1665;
+  --yellow: #ECD54A;
+  --teal: #4DA5B8;
+  --blue: #3470C9;
+  --orange: #E17131;
+  --green: #74A53B;
+  --white: #FFFFFF;
+
+  /* blog category colours */
+  --cat-all: #AAD0FB;
+  --cat-art: #B9352F;
+  --cat-craft: #E17131;
+  --cat-reading: #ECD54A;
+  --cat-random: #4DA5B8;
+  --cat-videogames: #56BC6D;
+  --cat-cooking: #3470C9;
+  --cat-music: #8455F6;
+  --cat-chronic: #737373;
+}
+
+*{ box-sizing: border-box; }
+
+html, body{
+  margin: 0;
+  padding: 0;
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'Quicksand', sans-serif;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, .pill, .blog-cta, .tab-btn{
+  font-family: 'Baloo 2', sans-serif;
+}
+
+a{ text-decoration: none; color: inherit; }
+
+/* ---------- NAV / GARLAND ---------- */
+.garland-nav{
+  position: relative;
+  width: 100%;
+  height: clamp(70px, 8vw, 108px);
+  background: var(--navy);
+  display: flex;
+  align-items: center;
+  padding: 0 clamp(1rem, 3vw, 2.5rem);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+.garland-nav::-webkit-scrollbar{ display: none; }
+
+.garland-strand{
+  flex: 1 1 60px;
+  min-width: 36px;
+  height: 58%;
+  width: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.pill{
+  position: relative;
+  flex: 0 0 auto;
+  padding: 0.65em 1.6em;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: clamp(0.8rem, 1.4vw, 1.15rem);
+  color: var(--white);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  white-space: nowrap;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  z-index: 2;
+}
+.pill:hover{
+  transform: scale(1.06);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+}
+.pill.active{
+  box-shadow: 0 0 0 3px var(--navy), 0 0 0 5px var(--white), 0 4px 10px rgba(0,0,0,0.25);
+}
+
+.pill.home{ background: var(--teal); }
+.pill.blog-nav{ background: var(--blue); }
+.pill.gallery{ background: var(--orange); }
+.pill.contact{ background: var(--green); }
+
+@media (max-width: 720px){
+  .garland-nav{ padding: 0 0.75rem; }
+  .garland-strand{ min-width: 22px; height: 48%; flex-basis: 30px; }
+  .pill{ padding: 0.55em 1.1em; font-size: 0.8rem; }
+}

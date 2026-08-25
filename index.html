@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CosyFynix — Welcome</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  /* ---------- HERO (page-specific) ---------- */
+  .hero{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(1rem, 4vw, 4rem);
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: clamp(1.5rem, 5vw, 4rem) clamp(1.5rem, 5vw, 3rem) clamp(2rem, 6vw, 4rem);
+    flex-wrap: wrap;
+  }
+
+  .illustration{
+    flex: 1 1 440px;
+    max-width: 560px;
+    min-width: 300px;
+  }
+  .illustration img{
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .hero-text{
+    flex: 1 1 440px;
+    max-width: 620px;
+    min-width: 300px;
+  }
+
+  .eyebrow{
+    font-weight: 700;
+    font-size: clamp(1.6rem, 3.4vw, 2.6rem);
+    letter-spacing: 0.5px;
+    margin: 0 0 0.1em 0;
+    line-height: 1.1;
+  }
+
+  .site-title{
+    font-weight: 800;
+    font-size: clamp(2.4rem, 5.2vw, 3.9rem);
+    line-height: 1;
+    margin: 0 0 0.6em 0;
+    letter-spacing: 0.5px;
+  }
+
+  .yellow-box{
+    background: var(--yellow);
+    color: var(--navy);
+    border-radius: 26px;
+    padding: clamp(1.3rem, 3vw, 2rem) clamp(1.5rem, 3.5vw, 2.4rem);
+    font-weight: 600;
+    font-size: clamp(0.95rem, 1.6vw, 1.2rem);
+    line-height: 1.55;
+    text-align: center;
+    box-shadow: 0 6px 0 rgba(0,0,0,0.12);
+  }
+
+  .cta-row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1.7em;
+    flex-wrap: wrap;
+  }
+
+  .blog-cta{
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6em;
+    background: var(--blue);
+    color: var(--white);
+    font-weight: 700;
+    font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+    padding: 0.75em 1.8em;
+    border-radius: 999px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .blog-cta span{ text-decoration: underline; }
+  .blog-cta:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  }
+  .blog-cta svg{ width: 1.2em; height: 1.2em; }
+
+  /* ---------- SOCIALS ---------- */
+  .socials{
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .social-icon{
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.15s ease;
+  }
+  .social-icon:hover{ transform: translateY(-3px); }
+
+  .etsy{
+    background: var(--navy);
+    border: 2px solid var(--orange);
+    color: var(--orange);
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+  }
+
+  .instagram{
+    background: radial-gradient(circle at 30% 110%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  }
+  .instagram svg{ width: 24px; height: 24px; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 720px){
+    .hero{ flex-direction: column; text-align: center; gap: 0.75rem; padding-top: 1.25rem; }
+    .eyebrow, .site-title{ text-align: center; }
+    .yellow-box{ text-align: center; }
+    .cta-row{ justify-content: center; }
+    .illustration{ flex-basis: auto; min-width: 0; max-width: 380px; }
+    .hero-text{ flex-basis: auto; min-width: 0; margin-top: 0; }
+  }
+</style>
+</head>
+<body>
+
+  <nav class="garland-nav" aria-label="Primary">
+    <a href="index.html" class="pill home active">Home</a>
+    <img src="assets/singlegarland.png" class="garland-strand" alt="">
+    <a href="blog.html" class="pill blog-nav">Blog</a>
+    <img src="assets/singlegarland.png" class="garland-strand" alt="">
+    <a href="#gallery" class="pill gallery">Gallery</a>
+    <img src="assets/singlegarland.png" class="garland-strand" alt="">
+    <a href="#contact" class="pill contact">Contact</a>
+  </nav>
+
+  <main class="hero">
+    <div class="illustration">
+      <img src="assets/landingimage.png" alt="A watercolour illustration of a bookshelf filled with colourful books and trinkets, a red bird with glasses and a scarf perched on a grey armchair, a curly-haired white dog named Alfred sitting on the chair, and a potted plant, with handwritten labels introducing Alfred and the plant.">
+    </div>
+
+    <div class="hero-text">
+      <h2 class="eyebrow">WELCOME TO...</h2>
+      <h1 class="site-title">COSYFYNIX</h1>
+
+      <div class="yellow-box">
+        My (slightly conceited) cosy little nook to share my hyper-fixations and hobbies. Hopefully this will make said hyper-fixations feel less like a long string of lost dopamine and more like good investments after all.
+      </div>
+
+      <div class="cta-row">
+        <a href="blog.html" class="blog-cta">
+          <span>BLOG</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+
+        <div class="socials">
+          <a href="#" class="social-icon etsy" aria-label="Etsy shop">e</a>
+          <a href="#" class="social-icon instagram" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>

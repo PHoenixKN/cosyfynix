@@ -10,32 +10,37 @@
 <link rel="stylesheet" href="assets/site.css">
 <style>
   /* =========================================================
-     BLOG PAGE — CATEGORY TOKENS
-     Eight hyperfixations, eight colours, all pulled from the
-     same watercolour-cosy family as the rest of the site.
+     BLOG PAGE — dark navy theme, matched to site.css palette
      ========================================================= */
-  :root{
-    --cat-art:      #E8846B;   /* art & craft — terracotta coral   */
-    --cat-art-bg:   #FCE8E1;
-    --cat-reading:  #5E9E82;   /* reading — sage teal              */
-    --cat-reading-bg:#E2EFE7;
-    --cat-writing:  #D69A2D;   /* writing — inkwell gold           */
-    --cat-writing-bg:#FAEDD2;
-    --cat-games:    #8073C9;   /* video games — periwinkle         */
-    --cat-games-bg: #E9E5F7;
-    --cat-cooking:  #C15A2E;   /* cooking — rust / paprika         */
-    --cat-cooking-bg:#F5E2D6;
-    --cat-music:    #B5567F;   /* music & podcasts — dusty mauve   */
-    --cat-music-bg: #F5E1EA;
-    --cat-alfred:   #9C6B3E;   /* Alfred — dog-fur brown           */
-    --cat-alfred-bg:#EFE3D3;
-    --cat-chronic:  #7B7FA3;   /* chronic illness — soft lavender  */
-    --cat-chronic-bg:#E7E7F1;
-    --ink: var(--navy, #1F2A44);
-    --paper: var(--white, #FFFDF8);
+
+  /* ---------- SCATTERED BACKGROUND ARTWORK ---------- */
+  /* Sits behind everything, spans the full page height, and
+     surfaces a different illustration every so often as you
+     scroll. Uses the two known assets for now — see the note
+     at the bottom of the chat about swapping in more crops. */
+  .bg-decor{
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .bg-decor img{
+    position: absolute;
+    opacity: 0.16;
+    mix-blend-mode: luminosity;
+    filter: brightness(1.6);
+  }
+  @media (max-width: 880px){
+    .bg-decor{ display: none; } /* keeps mobile reading uncluttered */
   }
 
-  body{ background: var(--paper); }
+  body{ position: relative; }
+  .garland-nav, .blog-header, .filter-bar, .feed, .empty-state{
+    position: relative;
+    z-index: 1;
+  }
 
   /* ---------- PAGE HEADER ---------- */
   .blog-header{
@@ -45,23 +50,20 @@
     text-align: center;
   }
   .blog-header .eyebrow{
-    font-family: 'Baloo 2', sans-serif;
     font-weight: 700;
     font-size: clamp(1.4rem, 3vw, 2rem);
-    color: var(--ink);
+    color: var(--white);
     margin: 0 0 0.1em;
   }
   .blog-header h1{
-    font-family: 'Baloo 2', sans-serif;
     font-weight: 800;
     font-size: clamp(2rem, 4.5vw, 3rem);
-    color: var(--ink);
+    color: var(--yellow);
     margin: 0 0 0.5em;
   }
   .blog-header p{
-    font-family: 'Quicksand', sans-serif;
     font-weight: 600;
-    color: var(--ink);
+    color: var(--white);
     opacity: 0.75;
     max-width: 60ch;
     margin: 0 auto 1.2em;
@@ -72,25 +74,24 @@
   .filter-bar{
     max-width: 900px;
     margin: 0 auto;
-    padding: 0 clamp(1.5rem, 5vw, 3rem) 1.5rem;
+    padding: 0.75rem clamp(1.5rem, 5vw, 3rem) 1.5rem;
     display: flex;
     flex-wrap: wrap;
     gap: 0.6rem;
     justify-content: center;
     position: sticky;
     top: 0;
-    background: var(--paper);
+    background: var(--navy);
     z-index: 20;
-    padding-top: 0.75rem;
   }
   .filter-chip{
     font-family: 'Quicksand', sans-serif;
     font-weight: 700;
     font-size: 0.85rem;
     letter-spacing: 0.2px;
-    border: 2px solid var(--chip-color, var(--ink));
-    color: var(--chip-color, var(--ink));
-    background: var(--paper);
+    border: 2px solid var(--chip-color, var(--white));
+    color: var(--chip-color, var(--white));
+    background: transparent;
     border-radius: 999px;
     padding: 0.5em 1.1em;
     display: inline-flex;
@@ -102,36 +103,36 @@
   }
   .filter-chip .dot{
     width: 10px; height: 10px; border-radius: 50%;
-    background: var(--chip-color, var(--ink));
+    background: var(--chip-color, var(--white));
     flex-shrink: 0;
   }
   .filter-chip:hover{ transform: translateY(-2px); }
   .filter-chip.active{
-    background: var(--chip-color, var(--ink));
-    color: var(--paper);
+    background: var(--chip-color, var(--white));
+    color: var(--chip-ink, var(--navy));
   }
-  .filter-chip.active .dot{ background: var(--paper); }
+  .filter-chip.active .dot{ background: var(--chip-ink, var(--navy)); }
   .filter-chip.reset{
     border-style: dashed;
-    opacity: 0.8;
+    opacity: 0.85;
   }
 
   /* ---------- FEED ---------- */
   .feed{
     max-width: 720px;
     margin: 0 auto;
-    padding: 0.5rem clamp(1.2rem, 5vw, 2rem) 5rem;
+    padding: 0.5rem clamp(1.2rem, 5vw, 2rem) 6rem;
     display: flex;
     flex-direction: column;
     gap: 1.75rem;
   }
 
   .post-card{
-    background: var(--paper);
-    border: 3px solid var(--cat-color, var(--ink));
+    background: var(--navy-soft);
+    border: 3px solid var(--cat-color, var(--white));
     border-radius: 28px;
     padding: clamp(1.1rem, 3vw, 1.6rem) clamp(1.2rem, 3.4vw, 1.8rem);
-    box-shadow: 0 6px 0 rgba(0,0,0,0.08);
+    box-shadow: 0 6px 0 rgba(0,0,0,0.25);
     cursor: pointer;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
     opacity: 0;
@@ -140,18 +141,16 @@
   }
   .post-card:hover{
     transform: translateY(-3px);
-    box-shadow: 0 10px 0 rgba(0,0,0,0.1);
+    box-shadow: 0 10px 0 rgba(0,0,0,0.3);
   }
-  .post-card.hidden{ display: none; }
   @keyframes rise{ to{ opacity: 1; transform: translateY(0); } }
 
   .post-tag{
     display: inline-flex;
     align-items: center;
     gap: 0.5em;
-    background: var(--cat-bg, #eee);
-    color: var(--cat-color, var(--ink));
-    font-family: 'Quicksand', sans-serif;
+    background: var(--cat-color, #888);
+    color: var(--cat-ink, var(--white));
     font-weight: 700;
     font-size: 0.78rem;
     letter-spacing: 0.4px;
@@ -166,16 +165,15 @@
     font-family: 'Baloo 2', sans-serif;
     font-weight: 700;
     font-size: clamp(1.25rem, 2.6vw, 1.55rem);
-    color: var(--ink);
+    color: var(--white);
     margin: 0 0 0.5rem;
     line-height: 1.2;
   }
 
   .post-meta{
-    font-family: 'Quicksand', sans-serif;
     font-weight: 600;
     font-size: 0.8rem;
-    color: var(--ink);
+    color: var(--white);
     opacity: 0.55;
     margin: 0 0 0.9rem;
   }
@@ -189,29 +187,30 @@
     flex: 1;
     aspect-ratio: 1 / 1;
     border-radius: 16px;
-    background: var(--cat-bg, #eee);
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--cat-color, rgba(255,255,255,0.2));
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
   }
-  .image-strip svg{ width: 55%; height: 55%; color: var(--cat-color, var(--ink)); }
+  .image-strip svg{ width: 50%; height: 50%; color: var(--cat-color, var(--white)); }
 
   .post-excerpt{
-    font-family: 'Quicksand', sans-serif;
     font-weight: 500;
     font-size: 0.98rem;
     line-height: 1.6;
-    color: var(--ink);
+    color: var(--white);
+    opacity: 0.92;
     margin: 0 0 1rem;
   }
 
   .post-full{
-    font-family: 'Quicksand', sans-serif;
     font-weight: 500;
     font-size: 0.98rem;
     line-height: 1.65;
-    color: var(--ink);
+    color: var(--white);
+    opacity: 0.92;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.35s ease;
@@ -231,22 +230,20 @@
     display: inline-flex;
     align-items: center;
     gap: 1.1rem;
-    background: var(--cat-bg, #eee);
-    color: var(--cat-color, var(--ink));
+    background: rgba(255,255,255,0.08);
+    color: var(--white);
     border-radius: 999px;
     padding: 0.45em 1.1em;
-    font-family: 'Quicksand', sans-serif;
     font-weight: 700;
     font-size: 0.85rem;
   }
   .engage-box span{ display: inline-flex; align-items: center; gap: 0.35em; }
-  .engage-box svg{ width: 16px; height: 16px; }
+  .engage-box svg{ width: 16px; height: 16px; color: var(--cat-color, var(--white)); }
 
   .expand-hint{
-    font-family: 'Quicksand', sans-serif;
     font-weight: 700;
     font-size: 0.85rem;
-    color: var(--cat-color, var(--ink));
+    color: var(--cat-color, var(--white));
     display: inline-flex;
     align-items: center;
     gap: 0.3em;
@@ -259,9 +256,8 @@
 
   .empty-state{
     text-align: center;
-    font-family: 'Quicksand', sans-serif;
     font-weight: 600;
-    color: var(--ink);
+    color: var(--white);
     opacity: 0.65;
     padding: 3rem 1rem;
     display: none;
@@ -274,6 +270,8 @@
 </style>
 </head>
 <body>
+
+  <div class="bg-decor" id="bgDecor"></div>
 
   <nav class="garland-nav" aria-label="Primary">
     <a href="index.html" class="pill home">Home</a>
@@ -298,16 +296,16 @@
 
 <script>
 /* ---------------------------------------------------------
-   ICONS — small line-art per category, tinted via currentColor
+   ICONS
 --------------------------------------------------------- */
 const icons = {
   art: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.5 2 2 6 2 10.5 2 13 4 14 6 14c1 0 1-1 2-1s1 1 2 1c1.5 0 1.5-2 3-2s2 2 4 2c2.5 0 5-1.5 5-4C22 6 17.5 2 12 2Z"/><circle cx="7.5" cy="9" r="1"/><circle cx="12" cy="7" r="1"/><circle cx="16.5" cy="9" r="1"/><path d="M9 18c0 1.7 1.3 3 3 3s3-1.3 3-3"/></svg>`,
+  craft: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.4"/><circle cx="6" cy="18" r="2.4"/><line x1="8.6" y1="7.6" x2="19" y2="18"/><line x1="8.6" y1="16.4" x2="19" y2="6"/></svg>`,
   reading: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5S4.5 4 8 4s6 1.5 6 1.5v14S11.5 18 8 18s-6 1.5-6 1.5Z"/><path d="M22 5.5S19.5 4 16 4s-2 1.5-2 1.5v14s.5-1.5 2-1.5 6 1.5 6 1.5Z"/></svg>`,
-  writing: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c1.5-.3 3-.6 4-1.6L18.6 8.8a2 2 0 0 0 0-2.8L17.9 5.3a2 2 0 0 0-2.8 0L4.6 16.9c-1 1-1.3 2.5-1.6 4Z"/><path d="M14 6.5l3.5 3.5"/></svg>`,
-  games: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="20" height="10" rx="5"/><line x1="7" y1="11" x2="7" y2="15"/><line x1="5" y1="13" x2="9" y2="13"/><circle cx="16" cy="12" r="1"/><circle cx="18.5" cy="14.5" r="1"/></svg>`,
+  random: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8" cy="8" r="1.1" fill="currentColor" stroke="none"/><circle cx="16" cy="8" r="1.1" fill="currentColor" stroke="none"/><circle cx="8" cy="16" r="1.1" fill="currentColor" stroke="none"/><circle cx="16" cy="16" r="1.1" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.1" fill="currentColor" stroke="none"/></svg>`,
+  videogames: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="20" height="10" rx="5"/><line x1="7" y1="11" x2="7" y2="15"/><line x1="5" y1="13" x2="9" y2="13"/><circle cx="16" cy="12" r="1"/><circle cx="18.5" cy="14.5" r="1"/></svg>`,
   cooking: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13a8 8 0 0 1 16 0Z"/><line x1="3" y1="13" x2="21" y2="13"/><line x1="3" y1="17" x2="21" y2="17"/><path d="M9 8V4M12 8V3M15 8V4"/></svg>`,
   music: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>`,
-  alfred: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="1.6"/><circle cx="11" cy="5" r="1.6"/><circle cx="15" cy="5.5" r="1.6"/><circle cx="18" cy="8.5" r="1.6"/><path d="M6 15c0-3 3-5 6-5s6 2 6 5-2 5-6 5-6-2-6-5Z"/></svg>`,
   chronic: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 8.2c0 4.6-8.8 10.8-8.8 10.8S3.2 12.8 3.2 8.2A4.6 4.6 0 0 1 12 5.8a4.6 4.6 0 0 1 8.8 2.4Z"/><polyline points="6 11 9 11 10.5 8 12.5 14 14 11 18 11"/></svg>`,
   heart: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 8.2c0 4.6-8.8 10.8-8.8 10.8S3.2 12.8 3.2 8.2A4.6 4.6 0 0 1 12 5.8a4.6 4.6 0 0 1 8.8 2.4Z"/></svg>`,
   comment: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.9 8.4A8.9 8.9 0 0 1 8 19l-5 1 1-4.5A8.4 8.4 0 0 1 12.6 3a8.4 8.4 0 0 1 8.4 8.5Z"/></svg>`,
@@ -315,17 +313,17 @@ const icons = {
 };
 
 /* ---------------------------------------------------------
-   CATEGORY CONFIG
+   CATEGORY CONFIG — matched 1:1 to the vars in site.css
 --------------------------------------------------------- */
 const categories = [
-  { id: "art",     label: "Art & Craft",       color: "var(--cat-art)",     bg: "var(--cat-art-bg)" },
-  { id: "reading", label: "Reading",           color: "var(--cat-reading)", bg: "var(--cat-reading-bg)" },
-  { id: "writing", label: "Writing",           color: "var(--cat-writing)", bg: "var(--cat-writing-bg)" },
-  { id: "games",   label: "Video Games",       color: "var(--cat-games)",   bg: "var(--cat-games-bg)" },
-  { id: "cooking", label: "Cooking",           color: "var(--cat-cooking)", bg: "var(--cat-cooking-bg)" },
-  { id: "music",   label: "Music & Podcasts",  color: "var(--cat-music)",   bg: "var(--cat-music-bg)" },
-  { id: "alfred",  label: "Alfred",            color: "var(--cat-alfred)",  bg: "var(--cat-alfred-bg)" },
-  { id: "chronic", label: "Chronic Illness",   color: "var(--cat-chronic)", bg: "var(--cat-chronic-bg)" },
+  { id: "art",        label: "Art",               varName: "--cat-art",        ink: "var(--white)" },
+  { id: "craft",      label: "Craft",              varName: "--cat-craft",      ink: "var(--white)" },
+  { id: "reading",    label: "Reading",            varName: "--cat-reading",    ink: "var(--navy)"  },
+  { id: "random",     label: "Random",             varName: "--cat-random",     ink: "var(--white)" },
+  { id: "videogames", label: "Video Games",        varName: "--cat-videogames", ink: "var(--navy)"  },
+  { id: "cooking",    label: "Cooking",            varName: "--cat-cooking",    ink: "var(--white)" },
+  { id: "music",      label: "Music & Podcasts",   varName: "--cat-music",      ink: "var(--white)" },
+  { id: "chronic",    label: "Chronic Illness",    varName: "--cat-chronic",    ink: "var(--white)" },
 ];
 
 /* ---------------------------------------------------------
@@ -333,7 +331,14 @@ const categories = [
 --------------------------------------------------------- */
 const posts = [
   {
-    cat: "art", title: "I bought a $40 embroidery hoop and now I have Opinions",
+    cat: "art", title: "Trying gouache for the first time and immediately overdoing it",
+    date: "Aug 25, 2026", likes: 33, comments: 8,
+    excerpt: "Bought gouache 'just to try.' Four paintings and a ruined kitchen towel later, this is apparently a whole personality now.",
+    full: `<p>Bought gouache "just to try it." Four paintings and one very ruined kitchen towel later, this is apparently a whole personality now.</p>
+           <p>Turns out gouache rewets, which I did not know until I accidentally smudged an entire sky back into a puddle. The happy accident version of that sky is, unfortunately, better than the original.</p>`
+  },
+  {
+    cat: "craft", title: "I bought a $40 embroidery hoop and now I have Opinions",
     date: "Aug 24, 2026", likes: 38, comments: 9,
     excerpt: "Three weeks ago I couldn't thread a needle. Today I have a colour-coded floss drawer and a mild grudge against satin stitch.",
     full: `<p>Three weeks ago I couldn't thread a needle without narrating it out loud like a surgery. Today I own a colour-coded floss drawer, four kinds of hoops, and a mild personal grudge against satin stitch (it is not as forgiving as the tutorials promised).</p>
@@ -349,15 +354,15 @@ const posts = [
            <p>Will report back once I've located book three and my sleep schedule, in that order.</p>`
   },
   {
-    cat: "writing", title: "Draft four of the thing I keep not finishing",
-    date: "Aug 18, 2026", likes: 21, comments: 6,
-    excerpt: "Rewrote the opening chapter for the fourth time. It's better. It's also, somehow, still not right. Writing is a scam.",
-    full: `<p>Rewrote the opening chapter for the fourth time. It is objectively better — tighter voice, less throat-clearing, an actual hook instead of a weather report. It is also, somehow, still not right.</p>
-           <p>I think the problem is that I know the middle now and the opening doesn't know that yet. So back it goes, into the pile of openings that were technically fine.</p>
-           <p>Writing a novel is just agreeing to be wrong about the same paragraph forever.</p>`
+    cat: "random", title: "Alfred discovered the neighbour's cat and has never been the same",
+    date: "Aug 18, 2026", likes: 88, comments: 30,
+    excerpt: "He is thirteen pounds of curly fury and he has decided the fence is now a lookout post. This is his personality now.",
+    full: `<p>He is thirteen pounds of curly fury and he has decided the garden fence is now a permanent lookout post. This is his entire personality now — he clocks in at 7am, off duty by breakfast.</p>
+           <p>The cat, for the record, has not once looked at him. Alfred has not noticed this and would not care if he had.</p>
+           <p>Filed under "random" because I have no other category for a dog with a vendetta.</p>`
   },
   {
-    cat: "games", title: "112 hours into a farming sim and I have never felt more feral",
+    cat: "videogames", title: "112 hours into a farming sim and I have never felt more feral",
     date: "Aug 15, 2026", likes: 64, comments: 22,
     excerpt: "I do not need the museum donation achievement. I absolutely need the museum donation achievement.",
     full: `<p>I do not need the museum donation achievement. I absolutely need the museum donation achievement, and I will be reorganising my entire in-game barn to make room for one more silo, thank you.</p>
@@ -379,13 +384,6 @@ const posts = [
            <p>Also acquired a new hyper-specific interest in maritime trade routes, which is a very normal and sustainable amount of new interests to have this month.</p>`
   },
   {
-    cat: "alfred", title: "Alfred discovered the neighbour's cat and has never been the same",
-    date: "Aug 6, 2026", likes: 88, comments: 30,
-    excerpt: "He is thirteen pounds of curly fury and he has decided the fence is now a lookout post. This is his personality now.",
-    full: `<p>He is thirteen pounds of curly fury and he has decided the garden fence is now a permanent lookout post. This is his entire personality now — he clocks in at 7am, off duty by breakfast.</p>
-           <p>The cat, for the record, has not once looked at him. Alfred has not noticed this and would not care if he had.</p>`
-  },
-  {
     cat: "chronic", title: "What a 'good' flare-up day actually looks like",
     date: "Aug 3, 2026", likes: 71, comments: 24,
     excerpt: "Not every day needs a silver lining. Some days the win is just getting the laundry folded and calling it enough.",
@@ -396,7 +394,7 @@ const posts = [
 ];
 
 /* ---------------------------------------------------------
-   RENDER
+   RENDER — filters
 --------------------------------------------------------- */
 const catMap = Object.fromEntries(categories.map(c => [c.id, c]));
 const activeFilters = new Set();
@@ -405,6 +403,8 @@ function renderFilterBar(){
   const bar = document.getElementById("filterBar");
   const resetChip = document.createElement("button");
   resetChip.className = "filter-chip reset active";
+  resetChip.style.setProperty("--chip-color", "var(--cat-all)");
+  resetChip.style.setProperty("--chip-ink", "var(--navy)");
   resetChip.textContent = "All";
   resetChip.addEventListener("click", () => {
     activeFilters.clear();
@@ -416,7 +416,8 @@ function renderFilterBar(){
   categories.forEach(cat => {
     const chip = document.createElement("button");
     chip.className = "filter-chip";
-    chip.style.setProperty("--chip-color", cat.color);
+    chip.style.setProperty("--chip-color", `var(${cat.varName})`);
+    chip.style.setProperty("--chip-ink", cat.ink);
     chip.dataset.cat = cat.id;
     chip.innerHTML = `<span class="dot"></span>${cat.label}`;
     chip.addEventListener("click", () => {
@@ -436,6 +437,9 @@ function renderFilterBar(){
   }
 }
 
+/* ---------------------------------------------------------
+   RENDER — feed
+--------------------------------------------------------- */
 function renderFeed(){
   const feed = document.getElementById("feed");
   feed.innerHTML = "";
@@ -446,8 +450,8 @@ function renderFeed(){
     const cat = catMap[post.cat];
     const card = document.createElement("article");
     card.className = "post-card";
-    card.style.setProperty("--cat-color", cat.color);
-    card.style.setProperty("--cat-bg", cat.bg);
+    card.style.setProperty("--cat-color", `var(${cat.varName})`);
+    card.style.setProperty("--cat-ink", cat.ink);
     card.style.animationDelay = (i * 0.05) + "s";
 
     card.innerHTML = `
@@ -456,7 +460,7 @@ function renderFeed(){
       <p class="post-meta">${post.date}</p>
       <div class="image-strip">
         <div class="swatch">${icons[post.cat]}</div>
-        <div class="swatch">${icons[post.cat === 'alfred' ? 'heart' : post.cat]}</div>
+        <div class="swatch">${icons[post.cat]}</div>
         <div class="swatch">${icons[post.cat]}</div>
       </div>
       <p class="post-excerpt">${post.excerpt}</p>
@@ -477,10 +481,52 @@ function renderFeed(){
 
     feed.appendChild(card);
   });
+
+  placeBackgroundArt();
+}
+
+/* ---------------------------------------------------------
+   SCATTERED BACKGROUND ARTWORK
+   Cycles through the known site illustrations, dropping one
+   every ~70vh down the page, alternating sides, at a gentle
+   tilt and low opacity so text always stays readable.
+   Swap/add filenames in DECOR_ASSETS once more crops exist
+   (e.g. a standalone bookcase, plant, or fynix wordmark).
+--------------------------------------------------------- */
+const DECOR_ASSETS = [
+  "assets/landingimage.png",
+  "assets/singlegarland.png",
+];
+
+function placeBackgroundArt(){
+  const decor = document.getElementById("bgDecor");
+  decor.innerHTML = "";
+  const pageHeight = document.body.scrollHeight;
+  const step = Math.max(window.innerHeight * 0.7, 500);
+  const count = Math.max(3, Math.floor(pageHeight / step));
+
+  for (let i = 0; i < count; i++){
+    const img = document.createElement("img");
+    img.src = DECOR_ASSETS[i % DECOR_ASSETS.length];
+    img.alt = "";
+    const side = i % 2 === 0 ? "left" : "right";
+    const offset = 2 + (i % 3) * 3; // vary distance from edge a little
+    const size = 140 + (i % 3) * 40;
+    const rotate = (i % 2 === 0 ? -1 : 1) * (6 + (i % 4) * 3);
+
+    img.style.top = (i * step + step * 0.3) + "px";
+    img.style[side] = offset + "%";
+    img.style.width = size + "px";
+    img.style.transform = `rotate(${rotate}deg)`;
+
+    decor.appendChild(img);
+  }
+  decor.style.height = pageHeight + "px";
 }
 
 renderFilterBar();
 renderFeed();
+window.addEventListener("resize", placeBackgroundArt);
 </script>
 
 </body>

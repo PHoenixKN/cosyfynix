@@ -38,6 +38,25 @@
     color: var(--yellow);
     margin: 0 0 0.4em;
   }
+
+  .title-row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(1rem, 3vw, 2.5rem);
+  }
+  .title-row h1{ margin: 0 0 0.4em; }
+  .title-fynix{
+    display: none;
+    width: clamp(70px, 8vw, 120px);
+    height: auto;
+    flex-shrink: 0;
+  }
+  .title-fynix-left{ transform: scaleX(-1); }
+  @media (min-width: 860px){
+    .title-fynix{ display: block; }
+  }
+
   .blog-header p{
     font-weight: 600;
     color: var(--white);
@@ -366,7 +385,11 @@
 
   <header class="blog-header">
     <h2 class="eyebrow">THE</h2>
-    <h1>A COSY LITTLE BLOG</h1>
+    <div class="title-row">
+      <img src="assets/fynix.png" class="title-fynix title-fynix-left" alt="">
+      <h1>A COSY LITTLE BLOG</h1>
+      <img src="assets/fynix.png" class="title-fynix title-fynix-right" alt="">
+    </div>
     <p>It can be hard to find cosy entertainment that keeps you enthralled despite its nature of being relatively calm and low-stimulation. Or cosy recipes that aren't difficult and have very few steps. So when I do find that stuff, I like to share it, and I also love recommendations. So send them my way! <a href="https://www.instagram.com/cosy_fynix/?hl=en" target="_blank" rel="noopener">@cosy_fynix</a></p>
   </header>
 

@@ -465,6 +465,7 @@ const posts = [
     date: "Aug 30, 2026",
     image: "assets/cookies.png",
     imageAlt: "Almond meal chocolate cookies fresh from the oven",
+    excerpt: "Easy cookies for cravings",
     full: `<p>Chronic illness means I have a list a mile long of foods I can't eat, so I've made a few recipes that are me-friendly. This is one of them…</p>
            <p>Makes 6 brownie-style cookies that are GF, DF, SF, and delicious!</p>
            <p><strong>Ingredients:</strong> almond meal, cooking salt, 1 egg, white sugar, olive oil, cocoa powder.</p>
@@ -592,7 +593,7 @@ function renderFeed(){
       <div class="post-cover">
         <img src="${post.image}" alt="${post.imageAlt || post.title}">
       </div>
-      <p class="post-excerpt">10/10</p>
+      <p class="post-excerpt">${post.excerpt || "10/10"}</p>
       <div class="post-footer">
         <span class="expand-hint">Read more ${icons.chevron}</span>
       </div>

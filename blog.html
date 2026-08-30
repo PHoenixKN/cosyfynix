@@ -324,6 +324,7 @@
   }
   .post-modal-text li{ margin-bottom: 0.5em; }
   .post-modal-text li:last-child{ margin-bottom: 0; }
+  .post-modal-text .story-text{ font-style: italic; }
   .post-modal-text blockquote{
     margin: 0 0 1em;
     padding: 0.8em 1.1em;
@@ -390,7 +391,6 @@
   </nav>
 
   <header class="blog-header">
-    <h2 class="eyebrow">THE</h2>
     <div class="title-row">
       <img src="assets/fynix.png" class="title-fynix title-fynix-left" alt="">
       <h1>A COSY LITTLE BLOG</h1>
@@ -461,26 +461,6 @@ const categories = [
 --------------------------------------------------------- */
 const posts = [
   {
-    cat: "cooking", title: "Almond Meal Chocolate Cookies (GF, DF, SF)",
-    date: "Aug 30, 2026",
-    image: "assets/cookies.png",
-    imageAlt: "Almond meal chocolate cookies fresh from the oven",
-    excerpt: "Easy cookies for cravings",
-    full: `<p>Chronic illness means I have a list a mile long of foods I can't eat, so I've made a few recipes that are me-friendly. This is one of them…</p>
-           <p>Makes 6 brownie-style cookies that are GF, DF, SF, and delicious!</p>
-           <p><strong>Ingredients:</strong> almond meal, cooking salt, 1 egg, white sugar, olive oil, cocoa powder.</p>
-           <p><strong>Equipment:</strong> bowl, whisk, spatula, baking tray, baking paper, and an oven.</p>
-           <ol>
-             <li>Preheat the oven to 160°C (fan-forced).</li>
-             <li>Line a baking tray with baking paper.</li>
-             <li>Add the following to a bowl: 1 large egg, 1/2 cup of white sugar, 1/2 tablespoon of olive oil, 1/2 teaspoon of cooking salt, 1 tablespoon of cocoa powder. Then whisk it all together.</li>
-             <li>Once whisked, add in 1 and 1/4 cups of almond meal and use a spatula to combine.</li>
-             <li>Once combined, grab a small handful of the dough, form it into a ball, then squish it down into a disk shape (but not flat — a couple cm thick). Pop it on the baking paper. Repeat until you have 6.</li>
-             <li>Chuck it in the oven for about 18 minutes, or until you're happy with how they're cooked. Then remove and cool before eating.</li>
-           </ol>
-           <p><em>Note: Make sure your ingredients are free from your allergens. Sometimes cocoa powder is a "may contain" product, so just be cautious.</em></p>`
-  },
-  {
     cat: "reading", title: "The House in the Cerulean Sea — TJ Klune",
     date: "Aug 28, 2026",
     image: "assets/the house in the cerulean sea.jpg",
@@ -524,18 +504,40 @@ Then God's a fucking nerd’</blockquote>
            <p>Thank you, Madeleine and Joey. 10/10.</p>`
   },
   {
+    cat: "cooking", title: "Almond Meal Chocolate Cookies (GF, DF, SF)",
+    date: "Aug 30, 2026",
+    image: "assets/cookies.png",
+    imageAlt: "Almond meal chocolate cookies fresh from the oven",
+    excerpt: "Easy cookies for cravings",
+    full: `<p>Chronic illness means I have a list a mile long of foods I can't eat, so I've made a few recipes that are me-friendly. This is one of them…</p>
+           <p>Makes 6 brownie-style cookies that are GF, DF, SF, and delicious!</p>
+           <p><strong>Ingredients:</strong> almond meal, cooking salt, 1 egg, white sugar, olive oil, cocoa powder.</p>
+           <p><strong>Equipment:</strong> bowl, whisk, spatula, baking tray, baking paper, and an oven.</p>
+           <ol>
+             <li>Preheat the oven to 160°C (fan-forced).</li>
+             <li>Line a baking tray with baking paper.</li>
+             <li>Add the following to a bowl: 1 large egg, 1/2 cup of white sugar, 1/2 tablespoon of olive oil, 1/2 teaspoon of cooking salt, 1 tablespoon of cocoa powder. Then whisk it all together.</li>
+             <li>Once whisked, add in 1 and 1/4 cups of almond meal and use a spatula to combine.</li>
+             <li>Once combined, grab a small handful of the dough, form it into a ball, then squish it down into a disk shape (but not flat — a couple cm thick). Pop it on the baking paper. Repeat until you have 6.</li>
+             <li>Chuck it in the oven for about 18 minutes, or until you're happy with how they're cooked. Then remove and cool before eating.</li>
+           </ol>
+           <p><em>Note: Make sure your ingredients are free from your allergens. Sometimes cocoa powder is a "may contain" product, so just be cautious.</em></p>`
+  },
+  {
     cat: "writing", title: "Coco Nuts",
     date: "Sep 1, 2026",
     image: "assets/coconuts.png",
     imageAlt: "Illustration for the short story Coco Nuts",
     excerpt: "A stranded-on-a-desert-island teaser I might keep developing.",
     full: `<p><strong>Warning: strong language ahead.</strong> I sometimes set myself random writing prompts just to see what happens, and this is one of them — a teaser for something I might keep developing. This one's about a woman losing her mind at a very unreasonable, very magical tree after finding herself stranded on a deserted island.</p>
+           <div class="story-text">
            <p>I've never claimed to be emotionally stable. But throwing the same coconut repeatedly at the same coconut tree — I'm assuming that's what they're called… palm trees don't grow coconuts, right? — yeah, that was not my best moment. I say moment, but judging by my current inability to lift my right arm and the intense, throbbing shoulder pain, I'd guess I was at it for the better part of an hour. To make it worse, the coconut rebounded and hit me in the face… twice. Did that make me stop? No. It just pissed me off further. So I threw it harder. In the end, throwing fatigue wasn't what stopped me attacking the thing. No, the whole act continued until I had screamed so many profanities in such quick succession that the red in my face presumably turned blue and I passed out. Upon waking up, the pain emanating from the shoulder, my vocal cords, and the dozens of bruises over my body was enough to concede defeat to A. Fucking. Tree.</p>
            <p>I'd urge you not to feel bad for the tree. It wasn't the good kind of tree. It was not the innocent kind of tree. To be frank, it, and all of its brethren, were of the asshole variety. What makes this tree an asshole? The same thing that makes any tree or person, for that matter, an asshole — sentience and entitlement. As I get it, you were here first, but I didn't ask to get stranded alone on a deserted island in an ill-fated attempt to conjure excitement in life. And before you say, "isn't getting stuck on a deserted island exactly the thing to bring excitement?" No. No, it's not. It is what I would call profoundly, mindnumbingly, rage-induce-ingly, start a fire and watch it all…</p>
            <p>But I'm getting off track. The trees are assholes because every time I try to build a shelter they move. Like I'll collect all the fallen fronds, put a few stick thingies together into the shape of an H with the top half cut off above the waist, and balance them across two trees, start to feel good about myself and then… they'd move. And I don't mean "with the wind." These fuckers just uproot themselves, walk a few paces away and plant their butts right back down into the ground. Naturally, my shelter would be destroyed… every single time.</p>
            <p>But that wasn't enough to make me call them assholes. Believe it or not, I was reared for people pleasing and benevolence. It was never — strictly speaking — in my genome, but nature nurture and all that. Honestly, if that's all the trees had done, I'd probably have apologised for taking up their space or assuming I could use their shade to, you know, not die. And in fact, I had done that to start with when I realised these weren't your garden-variety trees, and even felt bad about it. So I went back to the beach where I'd first landed, collected more fallen materials and built a tiny shelter well out of their way.</p>
            <p>Do you think this was good enough for them? No. Apparently, me even breathing on this island was too much for them. So, in the middle of the night, I finally ready to sleep. The fire outside the shelter was crackling, I'd managed to catch a fish, dehydrate some seaweed and take my first poo in a week (I mention this because I really thought I would die of the affliction), so things were looking up. I'd even popped my head out of the shelter to enjoy the sea breeze. Then that big hunk of wood chips stumped his way down the beach and unloaded coconuts and palm fronds all over me, destroying my shelter, somehow smothering my fire, and collapsing the makeshift fish-dehydrating sticks I'd set up. Then he unceremoniously turned and started to leave. That's when I resorted to hurling coconuts.</p>
-           <p>So now the sun is coming up, and I'm back to square one, except now I'm in way more pain and even if rescue boats came to look for me, I wouldn't be able to call out for them.</p>`
+           <p>So now the sun is coming up, and I'm back to square one, except now I'm in way more pain and even if rescue boats came to look for me, I wouldn't be able to call out for them.</p>
+           </div>`
   },
   { 
     cat: "music", title: "Girls Who Don't DnD",
@@ -543,12 +545,12 @@ Then God's a fucking nerd’</blockquote>
     image: "assets/dnd.jpg",
     imageAlt: "Original logo for Girls who don't DnD",
     excerpt: "Filled with fun and adventure and you don't need to know DnD to love",
-    full: `<p>I have been listening to this podcast since it's third episode after lucking out with the spotify algorithm. Whether you love DnD or know nothing about it, you'll be right at home. The DM Corey is a fantastic storyteller, and if you listen from episode 1, which I do recommend, you'll be hooked.
-           <p>The girls - Lana, Indy, and Stacey are so much fun to listen to and bring absolute chaos to the game, taking it in new and interesting directions.
-           <p>The backpack of time, space, and unlimited underwear, the 'sneak attacks', and stealing the Mayor's hand are all moments that live in my brain rent free.
-           <p>This show is so good that I subscribe to on patreon. 
-           <p><strong>10/10. A must listen. These humans deserve the world. 
-  },  
+    full: `<p>I have been listening to this podcast since it's third episode after lucking out with the spotify algorithm. Whether you love DnD or know nothing about it, you'll be right at home. The DM Corey is a fantastic storyteller, and if you listen from episode 1, which I do recommend, you'll be hooked.</p>
+           <p>The girls - Lana, Indy, and Stacey are so much fun to listen to and bring absolute chaos to the game, taking it in new and interesting directions.</p>
+           <p>The backpack of time, space, and unlimited underwear, the 'sneak attacks', and stealing the Mayor's hand are all moments that live in my brain rent free.</p>
+           <p>This show is so good that I subscribe to on patreon.</p>
+           <p><strong>10/10. A must listen. These humans deserve the world.</strong></p>`
+  },
 ];
 
 /* ---------------------------------------------------------

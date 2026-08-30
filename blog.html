@@ -318,6 +318,12 @@
   }
   .post-modal-text p{ margin: 0 0 1em; }
   .post-modal-text p:last-child{ margin-bottom: 0; }
+  .post-modal-text ol, .post-modal-text ul{
+    margin: 0 0 1em;
+    padding-left: 1.4em;
+  }
+  .post-modal-text li{ margin-bottom: 0.5em; }
+  .post-modal-text li:last-child{ margin-bottom: 0; }
   .post-modal-text blockquote{
     margin: 0 0 1em;
     padding: 0.8em 1.1em;
@@ -454,6 +460,25 @@ const categories = [
    SAMPLE POSTS — swap copy/images for the real thing later
 --------------------------------------------------------- */
 const posts = [
+  {
+    cat: "cooking", title: "Almond Meal Chocolate Cookies (GF, DF, SF)",
+    date: "Aug 30, 2026",
+    image: "assets/cookies.png",
+    imageAlt: "Almond meal chocolate cookies fresh from the oven",
+    full: `<p>Chronic illness means I have a list a mile long of foods I can't eat, so I've made a few recipes that are me-friendly. This is one of them…</p>
+           <p>Makes 6 brownie-style cookies that are GF, DF, SF, and delicious!</p>
+           <p><strong>Ingredients:</strong> almond meal, cooking salt, 1 egg, white sugar, olive oil, cocoa powder.</p>
+           <p><strong>Equipment:</strong> bowl, whisk, spatula, baking tray, baking paper, and an oven.</p>
+           <ol>
+             <li>Preheat the oven to 160°C (fan-forced).</li>
+             <li>Line a baking tray with baking paper.</li>
+             <li>Add the following to a bowl: 1 large egg, 1/2 cup of white sugar, 1/2 tablespoon of olive oil, 1/2 teaspoon of cooking salt, 1 tablespoon of cocoa powder. Then whisk it all together.</li>
+             <li>Once whisked, add in 1 and 1/4 cups of almond meal and use a spatula to combine.</li>
+             <li>Once combined, grab a small handful of the dough, form it into a ball, then squish it down into a disk shape (but not flat — a couple cm thick). Pop it on the baking paper. Repeat until you have 6.</li>
+             <li>Chuck it in the oven for about 18 minutes, or until you're happy with how they're cooked. Then remove and cool before eating.</li>
+           </ol>
+           <p><em>Note: Make sure your ingredients are free from your allergens. Sometimes cocoa powder is a "may contain" product, so just be cautious.</em></p>`
+  },
   {
     cat: "reading", title: "The House in the Cerulean Sea — TJ Klune",
     date: "Aug 28, 2026",

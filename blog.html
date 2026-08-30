@@ -155,23 +155,18 @@
     margin: 0 0 0.9rem;
   }
 
-  .image-strip{
-    display: flex;
-    gap: 0.6rem;
+  .post-cover{
     margin-bottom: 0.9rem;
-  }
-  .image-strip .swatch{
-    flex: 1;
-    aspect-ratio: 1 / 1;
     border-radius: 16px;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid var(--cat-color, rgba(255,255,255,0.2));
-    display: flex;
-    align-items: center;
-    justify-content: center;
     overflow: hidden;
+    border: 1px solid var(--cat-color, rgba(255,255,255,0.2));
   }
-  .image-strip svg{ width: 50%; height: 50%; color: var(--cat-color, var(--white)); }
+  .post-cover img{
+    display: block;
+    width: 100%;
+    max-height: 340px;
+    object-fit: cover;
+  }
 
   .post-excerpt{
     font-weight: 500;
@@ -199,23 +194,10 @@
   .post-footer{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     gap: 1rem;
     margin-top: 1rem;
   }
-  .engage-box{
-    display: inline-flex;
-    align-items: center;
-    gap: 1.1rem;
-    background: rgba(255,255,255,0.08);
-    color: var(--white);
-    border-radius: 999px;
-    padding: 0.45em 1.1em;
-    font-weight: 700;
-    font-size: 0.85rem;
-  }
-  .engage-box span{ display: inline-flex; align-items: center; gap: 0.35em; }
-  .engage-box svg{ width: 16px; height: 16px; color: var(--cat-color, var(--white)); }
 
   .expand-hint{
     font-weight: 700;
@@ -253,15 +235,15 @@
     <img src="assets/singlegarland.png" class="garland-strand" alt="">
     <a href="blog.html" class="pill blog-nav active">Blog</a>
     <img src="assets/singlegarland.png" class="garland-strand" alt="">
-    <a href="index.html#gallery" class="pill gallery">Gallery</a>
+    <a href="index.html#quotes" class="pill gallery">Quotes</a>
     <img src="assets/singlegarland.png" class="garland-strand" alt="">
     <a href="index.html#contact" class="pill contact">Contact</a>
   </nav>
 
   <header class="blog-header">
     <h2 class="eyebrow">THE</h2>
-    <h1>HYPERFIXATION LOG</h1>
-    <p>Occasionally, something goes beyond hyperfixation and becomes a way of life — I love when that happens. But most of the time, it takes over all of my interest for a few weeks, feels like it'll stick around forever and might just be my next career or Etsy store, and then... poof.</p>
+    <h1>A COSY LITTLE BLOG</h1>
+    <p>It can be hard to find cosy entertainment that keeps you enthralled despite its nature of being relatively calm and low-stimulation. Or cosy recipes that aren't difficult and have very few steps. So when I do find that stuff, I like to share it, and I also love recommendations. So send them my way! <a href="https://www.instagram.com/cosy_fynix/?hl=en" target="_blank" rel="noopener">@cosy_fynix</a></p>
   </header>
 
   <div class="filter-bar" id="filterBar"></div>
@@ -306,65 +288,41 @@ const categories = [
 --------------------------------------------------------- */
 const posts = [
   {
-    cat: "art", title: "Trying gouache for the first time and immediately overdoing it",
-    date: "Aug 25, 2026", likes: 33, comments: 8,
-    excerpt: "Bought gouache 'just to try.' Four paintings and a ruined kitchen towel later, this is apparently a whole personality now.",
-    full: `<p>Bought gouache "just to try it." Four paintings and one very ruined kitchen towel later, this is apparently a whole personality now.</p>
-           <p>Turns out gouache rewets, which I did not know until I accidentally smudged an entire sky back into a puddle. The happy accident version of that sky is, unfortunately, better than the original.</p>`
+    cat: "reading", title: "The House in the Cerulean Sea — TJ Klune",
+    date: "Aug 28, 2026",
+    image: "assets/the house in the cerulean sea.jpg",
+    imageAlt: "Cover of The House in the Cerulean Sea by TJ Klune",
+    excerpt: "A beautiful, cosy fantasy with found family, magic, adventure, and a touch of romance. One of my all-time favourites.",
+    full: `<p>The House in the Cerulean Sea is a beautiful, cosy fantasy with some of my all-time favourite themes: found family, magic, adventure, and a touch of romance.</p>
+           <p>The story follows Linus, whose life is… beige or millennial grey. It's corporate, boring, and — not that he allows himself to see it — lonely. But Linus's job is interesting. He's basically a social worker for children with magical abilities in a world that fears magic. He's sent on assignment to a group home in the Cerulean Sea to meet with and assess the threat of some of the most powerful children the department is aware of. He gets to know them, and perhaps love them. In time, he finds all that was missing in his world.</p>
+           <p>The characters are rich and wholesome, even my precious little Lucifer, the six-year-old son of Satan, whose love of old records, fear of the dark, and overprotective nature make him all the more endearing. Then there is Arthur, the dad of all dads.</p>
+           <p>I love this book. I love this book deeply. It is one of my all-time favourites.</p>
+           <p>It is a must-read. 10/10.</p>
+           <p>…But I'm not big on the sequel.</p>`
   },
   {
-    cat: "craft", title: "I bought a $40 embroidery hoop and now I have Opinions",
-    date: "Aug 24, 2026", likes: 38, comments: 9,
-    excerpt: "Three weeks ago I couldn't thread a needle. Today I have a colour-coded floss drawer and a mild grudge against satin stitch.",
-    full: `<p>Three weeks ago I couldn't thread a needle without narrating it out loud like a surgery. Today I own a colour-coded floss drawer, four kinds of hoops, and a mild personal grudge against satin stitch (it is not as forgiving as the tutorials promised).</p>
-           <p>The piece that started it all was meant to be a small gift. It is now a 9x12 monster with a bird on it that took four attempts to look less like a pigeon having a bad day.</p>
-           <p>Cost so far: not asking. Dopamine gained: incalculable.</p>`
+    cat: "videogames", title: "Tinykin — Splashteam",
+    date: "Aug 25, 2026",
+    image: "assets/Tinykin_cover.jpg",
+    imageAlt: "Cover art for Tinykin by Splashteam",
+    excerpt: "Cosy, nostalgic, and a whole heap of fun — playing this felt like the warm fuzzies of blowing bubbles in summer as an eight-year-old.",
+    full: `<p>Tinykin is the best (new-to-me) game I have played in a long time. It's cosy. It's nostalgic. It is a whole heap of fun with a hint of challenge.</p>
+           <p>You play as a character named Milo. Milo is a galactic explorer who has become stranded in a 90s house. He goes around collecting Tinykin — little creatures with varying abilities — and with their help explores the house and collects everything he needs to get back to his homeworld.</p>
+           <p>It is listed as a puzzle game, but for me it was more of an adventure with fun mechanics, gameplay, and aesthetics. Yes, he does use the Tinykin to move around the various rooms of the house, carry large objects, connect electric outlets to devices, climb to high places, and blow stuff up (in very G-rated ways). But he also rides around on a bar of soap and explores rooms that represent the happiest parts of our collective childhood.</p>
+           <p>I can't do this game justice with my words. The best I can describe it is: playing Tinykin felt like the warm fuzzies of blowing bubbles in summer as an eight-year-old.</p>
+           <p>10/10. When I finished, I immediately started again. It made me happy, and it ended too soon.</p>
+           <p>I was lucky enough to get it 80% off from the Nintendo e-store. But it is well worth the full price. It is also available on PlayStation, Xbox, and through Steam.</p>`
   },
   {
-    cat: "reading", title: "A cosy fantasy binge that ruined my sleep schedule",
-    date: "Aug 21, 2026", likes: 52, comments: 14,
-    excerpt: "Started a 'gentle, low-stakes' cosy fantasy series at 9pm. Finished book two at 2am. No regrets, several consequences.",
-    full: `<p>Started a "gentle, low-stakes" cosy fantasy series at 9pm because I wanted something soft before bed. Finished book two at 2am. No regrets, several consequences.</p>
-           <p>What got me was the found-family pacing — every chapter earns its warmth instead of just declaring it. Also there is a soup-based subplot that lives rent-free in my head now.</p>
-           <p>Will report back once I've located book three and my sleep schedule, in that order.</p>`
-  },
-  {
-    cat: "writing", title: "Alfred discovered the neighbour's cat and has never been the same",
-    date: "Aug 18, 2026", likes: 88, comments: 30,
-    excerpt: "He is thirteen pounds of curly fury and he has decided the fence is now a lookout post. This is his personality now.",
-    full: `<p>He is thirteen pounds of curly fury and he has decided the garden fence is now a permanent lookout post. This is his entire personality now — he clocks in at 7am, off duty by breakfast.</p>
-           <p>The cat, for the record, has not once looked at him. Alfred has not noticed this and would not care if he had.</p>
-           <p>He's not a hyperfixation, he's just Alfred — but he's too central to this whole nook not to write about.</p>`
-  },
-  {
-    cat: "videogames", title: "112 hours into a farming sim and I have never felt more feral",
-    date: "Aug 15, 2026", likes: 64, comments: 22,
-    excerpt: "I do not need the museum donation achievement. I absolutely need the museum donation achievement.",
-    full: `<p>I do not need the museum donation achievement. I absolutely need the museum donation achievement, and I will be reorganising my entire in-game barn to make room for one more silo, thank you.</p>
-           <p>112 hours in and my farm has a colour scheme now. My actual house does not have a colour scheme. Make of that what you will.</p>`
-  },
-  {
-    cat: "cooking", title: "Attempted my grandmother's dumplings, mild chaos ensued",
-    date: "Aug 12, 2026", likes: 45, comments: 11,
-    excerpt: "Flour on the ceiling somehow. Dumplings ranged from 'restaurant quality' to 'abstract art'. Would do again immediately.",
-    full: `<p>Flour ended up on the ceiling somehow, which remains unexplained. The dumplings themselves ranged wildly in quality — a few restaurant-worthy, several firmly in "abstract art" territory, one that I'm choosing not to discuss.</p>
-           <p>The filling was the easy part. Folding them so they don't explode in the pot is, apparently, a skill passed down through generations that skipped me entirely.</p>
-           <p>Would absolutely do it again, ceiling and all.</p>`
-  },
-  {
-    cat: "music", title: "A podcast rabbit hole about medieval shipwrecks (send help)",
-    date: "Aug 9, 2026", likes: 29, comments: 7,
-    excerpt: "Started with one episode about a single shipwreck. Nine episodes and a library hold list later, I regret nothing.",
-    full: `<p>Started with one episode about a single shipwreck. Nine episodes and a library hold list later, I regret nothing and have opinions about ballast stones that no one asked for.</p>
-           <p>Also acquired a new hyper-specific interest in maritime trade routes, which is a very normal and sustainable amount of new interests to have this month.</p>`
-  },
-  {
-    cat: "chronic", title: "What a 'good' flare-up day actually looks like",
-    date: "Aug 3, 2026", likes: 71, comments: 24,
-    excerpt: "Not every day needs a silver lining. Some days the win is just getting the laundry folded and calling it enough.",
-    full: `<p>Not every day needs a silver lining, and I'm trying to get better at letting that be true. Today was a slower one — pacing meant the laundry took until 4pm and that was the whole plan, and that was allowed to be enough.</p>
-           <p>Writing this down mostly for future-me, on the days it's harder to remember: rest isn't a failure state, it's just part of how this works.</p>
-           <p>If you're having a rough one too — be gentle with yourself today.</p>`
+    cat: "music", title: "Drinking Song For the Socially Anxious — The Amazing Devil",
+    date: "Aug 22, 2026",
+    image: "assets/amazing devil.jpg",
+    imageAlt: "The Amazing Devil",
+    excerpt: "My all-time favourite song by my all-time favourite band. I feel this one in my very soul.",
+    full: `<p>My all-time favourite song by my all-time favourite band.</p>
+           <p>It's built around that specific, electric moment of recognition — when someone else's face lights up over the exact same niche, nerdy thing you love, and suddenly you don't have to pretend to be anyone else. It's about feeling safe enough to just be yourself, and having that met with warmth instead of judgement.</p>
+           <p>How could you not love it? I feel this song in my very soul.</p>
+           <p>Thank you, Madeleine and Joey. 10/10.</p>`
   },
 ];
 
@@ -433,18 +391,12 @@ function renderFeed(){
       <span class="post-tag">${icons[post.cat]} ${cat.label}</span>
       <h2 class="post-title">${post.title}</h2>
       <p class="post-meta">${post.date}</p>
-      <div class="image-strip">
-        <div class="swatch">${icons[post.cat]}</div>
-        <div class="swatch">${icons[post.cat]}</div>
-        <div class="swatch">${icons[post.cat]}</div>
+      <div class="post-cover">
+        <img src="${post.image}" alt="${post.imageAlt || post.title}">
       </div>
       <p class="post-excerpt">${post.excerpt}</p>
       <div class="post-full">${post.full}</div>
       <div class="post-footer">
-        <span class="engage-box">
-          <span>${icons.heart} ${post.likes}</span>
-          <span>${icons.comment} ${post.comments}</span>
-        </span>
         <span class="expand-hint">Read more ${icons.chevron}</span>
       </div>
     `;

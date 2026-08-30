@@ -168,15 +168,6 @@
     object-fit: cover;
   }
 
-  .post-excerpt{
-    font-weight: 500;
-    font-size: 0.98rem;
-    line-height: 1.6;
-    color: var(--white);
-    opacity: 0.92;
-    margin: 0 0 1rem;
-  }
-
   .post-full{
     font-weight: 500;
     font-size: 0.98rem;
@@ -300,7 +291,6 @@ const posts = [
     date: "Aug 28, 2026",
     image: "assets/the house in the cerulean sea.jpg",
     imageAlt: "Cover of The House in the Cerulean Sea by TJ Klune",
-    excerpt: "The House in the Cerulean Sea is a beautiful, cosy fantasy with some of my all-time favourite themes: found family, magic, adventure, and a touch of romance.",
     full: `<p>The House in the Cerulean Sea is a beautiful, cosy fantasy with some of my all-time favourite themes: found family, magic, adventure, and a touch of romance.</p>
            <p>The story follows Linus, whose life is… beige or millennial grey. It's corporate, boring, and — not that he allows himself to see it — lonely. But Linus's job is interesting. He's basically a social worker for children with magical abilities in a world that fears magic. He's sent on assignment to a group home in the Cerulean Sea to meet with and assess the threat of some of the most powerful children the department is aware of. He gets to know them, and perhaps love them. In time, he finds all that was missing in his world.</p>
            <p>The characters are rich and wholesome, even my precious little Lucifer, the six-year-old son of Satan, whose love of old records, fear of the dark, and overprotective nature make him all the more endearing. Then there is Arthur, the dad of all dads.</p>
@@ -313,7 +303,6 @@ const posts = [
     date: "Aug 25, 2026",
     image: "assets/Tinykin_cover.jpg",
     imageAlt: "Cover art for Tinykin by Splashteam",
-    excerpt: "Cosy, nostalgic, and a whole heap of fun — playing this felt like the warm fuzzies of blowing bubbles in summer as an eight-year-old.",
     full: `<p>Tinykin is the best (new-to-me) game I have played in a long time. It's cosy. It's nostalgic. It is a whole heap of fun with a hint of challenge.</p>
            <p>You play as a character named Milo. Milo is a galactic explorer who has become stranded in a 90s house. He goes around collecting Tinykin — little creatures with varying abilities — and with their help explores the house and collects everything he needs to get back to his homeworld.</p>
            <p>It is listed as a puzzle game, but for me it was more of an adventure with fun mechanics, gameplay, and aesthetics. Yes, he does use the Tinykin to move around the various rooms of the house, carry large objects, connect electric outlets to devices, climb to high places, and blow stuff up (in very G-rated ways). But he also rides around on a bar of soap and explores rooms that represent the happiest parts of our collective childhood.</p>
@@ -326,7 +315,6 @@ const posts = [
     date: "Aug 22, 2026",
     image: "assets/amazing devil.jpg",
     imageAlt: "The Amazing Devil",
-    excerpt: "My all-time favourite song by my all-time favourite band.",
     full: `<p>My all-time favourite song by my all-time favourite band.</p>
            <p>With lyrics like:</p>
            <blockquote>‘I ask if you play D&D,
@@ -411,7 +399,6 @@ function renderFeed(){
       <div class="post-cover">
         <img src="${post.image}" alt="${post.imageAlt || post.title}">
       </div>
-      <p class="post-excerpt">${post.excerpt}</p>
       <div class="post-full">${post.full}</div>
       <div class="post-footer">
         <span class="expand-hint">Read more ${icons.chevron}</span>

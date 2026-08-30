@@ -190,6 +190,14 @@
   .post-card.expanded .post-full{ max-height: 900px; }
   .post-full p{ margin: 0 0 0.9em; }
   .post-full p:last-child{ margin-bottom: 0; }
+  .post-full blockquote{
+    margin: 0 0 0.9em;
+    padding: 0.8em 1.1em;
+    border-left: 3px solid var(--cat-color, var(--white));
+    background: rgba(255,255,255,0.05);
+    font-style: italic;
+    white-space: pre-line;
+  }
 
   .post-footer{
     display: flex;
@@ -320,7 +328,16 @@ const posts = [
     imageAlt: "The Amazing Devil",
     excerpt: "My all-time favourite song by my all-time favourite band. I feel this one in my very soul.",
     full: `<p>My all-time favourite song by my all-time favourite band.</p>
-           <p>It's built around that specific, electric moment of recognition — when someone else's face lights up over the exact same niche, nerdy thing you love, and suddenly you don't have to pretend to be anyone else. It's about feeling safe enough to just be yourself, and having that met with warmth instead of judgement.</p>
+           <p>With lyrics like:</p>
+           <blockquote>‘I ask if you play D&D,
+And your face lights up like you've woken up
+From this endless fucking nightmare
+Of pretending this is you
+This is us, this is me, and this is how we're meant to be
+But your smile tells me I'm safe
+And that voice unspoken's heard
+'Cause if God make us all in his image
+Then God's a fucking nerd’ </blockquote>
            <p>How could you not love it? I feel this song in my very soul.</p>
            <p>Thank you, Madeleine and Joey. 10/10.</p>`
   },

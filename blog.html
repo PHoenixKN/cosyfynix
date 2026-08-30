@@ -23,7 +23,7 @@
   .blog-header{
     max-width: 900px;
     margin: 0 auto;
-    padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1.5rem, 5vw, 3rem) 0.5rem;
+    padding: clamp(1rem, 2.5vw, 1.75rem) clamp(1.5rem, 5vw, 3rem) 0.25rem;
     text-align: center;
   }
   .blog-header .eyebrow{
@@ -36,14 +36,14 @@
     font-weight: 800;
     font-size: clamp(2rem, 4.5vw, 3rem);
     color: var(--yellow);
-    margin: 0 0 0.5em;
+    margin: 0 0 0.4em;
   }
   .blog-header p{
     font-weight: 600;
     color: var(--white);
     opacity: 0.75;
     max-width: 60ch;
-    margin: 0 auto 1.2em;
+    margin: 0 auto 0.8em;
     line-height: 1.5;
   }
 
@@ -51,7 +51,7 @@
   .filter-bar{
     max-width: 900px;
     margin: 0 auto;
-    padding: 0.75rem clamp(1.5rem, 5vw, 3rem) 1.5rem;
+    padding: 0.5rem clamp(1.5rem, 5vw, 3rem) 1rem;
     display: flex;
     flex-wrap: wrap;
     gap: 0.6rem;
@@ -96,12 +96,13 @@
 
   /* ---------- FEED ---------- */
   .feed{
-    max-width: 720px;
+    max-width: 1320px;
     margin: 0 auto;
-    padding: 0.5rem clamp(1.2rem, 5vw, 2rem) 6rem;
-    display: flex;
-    flex-direction: column;
+    padding: 0.5rem clamp(1.2rem, 5vw, 3rem) 6rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
     gap: 1.75rem;
+    align-items: start;
   }
 
   .post-card{
@@ -166,6 +167,52 @@
     width: 100%;
     max-height: 340px;
     object-fit: cover;
+    cursor: zoom-in;
+    transition: filter 0.15s ease;
+  }
+  .post-cover img:hover{ filter: brightness(1.08); }
+
+  /* ---------- LIGHTBOX ---------- */
+  .lightbox{
+    position: fixed;
+    inset: 0;
+    background: rgba(2,11,68,0.92);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: clamp(1.5rem, 5vw, 4rem);
+    cursor: zoom-out;
+  }
+  .lightbox.show{ display: flex; }
+  .lightbox img{
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    cursor: default;
+  }
+  .lightbox-close{
+    position: absolute;
+    top: clamp(0.75rem, 3vw, 1.75rem);
+    right: clamp(0.75rem, 3vw, 1.75rem);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.12);
+    color: var(--white);
+    font-size: 1.8rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+  .lightbox-close:hover{
+    background: rgba(255,255,255,0.22);
+    transform: scale(1.06);
   }
 
   .post-full{
@@ -249,6 +296,11 @@
 
   <main class="feed" id="feed"></main>
   <p class="empty-state" id="emptyState">Nothing here for that combo yet — try clearing a filter 🐾</p>
+
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close image">&times;</button>
+    <img id="lightboxImg" src="" alt="">
+  </div>
 
 <script>
 /* ---------------------------------------------------------
@@ -410,9 +462,39 @@ function renderFeed(){
       card.querySelector(".expand-hint").innerHTML = (isExpanded ? "Read less " : "Read more ") + icons.chevron;
     });
 
+    card.querySelector(".post-cover img").addEventListener("click", (e) => {
+      e.stopPropagation();
+      openLightbox(post.image, post.imageAlt || post.title);
+    });
+
     feed.appendChild(card);
   });
 }
+
+/* ---------------------------------------------------------
+   LIGHTBOX — click a post image to view it full-size
+--------------------------------------------------------- */
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightboxImg");
+const lightboxClose = document.getElementById("lightboxClose");
+
+function openLightbox(src, alt){
+  lightboxImg.src = src;
+  lightboxImg.alt = alt || "";
+  lightbox.classList.add("show");
+}
+function closeLightbox(){
+  lightbox.classList.remove("show");
+  lightboxImg.src = "";
+}
+
+lightboxClose.addEventListener("click", closeLightbox);
+lightbox.addEventListener("click", (e) => {
+  if (e.target === lightbox) closeLightbox();
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && lightbox.classList.contains("show")) closeLightbox();
+});
 
 /* ---------------------------------------------------------
    SCATTERED BACKGROUND ARTWORK — disabled for now.

@@ -178,6 +178,13 @@
   }
   .post-cover img:hover{ filter: brightness(1.08); }
 
+  .post-excerpt{
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--cat-color, var(--white));
+    margin: 0 0 0.9rem;
+  }
+
   /* ---------- LIGHTBOX ---------- */
   .lightbox{
     position: fixed;
@@ -537,6 +544,7 @@ function renderFeed(){
       <div class="post-cover">
         <img src="${post.image}" alt="${post.imageAlt || post.title}">
       </div>
+      <p class="post-excerpt">10/10</p>
       <div class="post-footer">
         <span class="expand-hint">Read more ${icons.chevron}</span>
       </div>
